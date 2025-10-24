@@ -1,18 +1,18 @@
-# boxPlot - Enhanced Boxplot for MATLAB
+# boxPlot - A Better Boxplot for MATLAB
 
 A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, and paired data connections.
 
 ![plot](https://github.com/ryan-gorzek/boxPlot/blob/main/plots/boxPlot_Examples.jpeg)
 ## Why boxPlot?
 
-MATLAB's built-in `boxplot` function has limitations in customization and can be cumbersome to style. **boxPlot** offers:
+MATLAB's built-in `boxplot` and `boxchart` functions have limitations in customization and can be cumbersome to style. **boxPlot** offers:
 
 - **Full color control** - Customize box fills, edges, medians, whiskers, and outliers independently
 - **Transparency support** - Set alpha values for all visual elements
 - **Grouped data** - Easy handling of factorial designs with automatic spacing
 - **Individual points** - Overlay raw data with customizable jitter
 - **Paired connections** - Connect related observations with lines (ideal for repeated measures)
-- **Publication-ready** - Clean, professional output with minimal code
+- **Publication-ready** - Clean, professional look with minimal code
 - **Intuitive syntax** - Modern name-value pair arguments with sensible defaults
 - **Zero dependencies** - Works with base MATLAB, no toolboxes required
 
@@ -117,10 +117,10 @@ Handle complex experimental designs with ease:
 
 - Sensible default colors (gray boxes, black medians/whiskers)
 - Automatic axis scaling with appropriate padding
-- Handles missing data (NaN) gracefully
+- Automatic missing data (NaN) handling
 - Publication-ready appearance out of the box
 
-### Flexible Input
+### Flexibility
 
 - Matrix input: each column becomes a box
 - Vector input with labels: specify categorical grouping
@@ -244,9 +244,8 @@ set(gca, 'GridAlpha', 0.15);
 ## Tips and Tricks
 
 1. **Jitter control**: Use `jitterBound` to adjust the spread of jittered points
-2. **Missing data**: The function handles NaN values automatically
-3. **Axis limits**: Automatically calculated with 20% padding, or set manually with `ylim`
-4. **Box spacing**: Adjust to your preferred look with `boxSpacing` argument
+2. **Axis limits**: Automatically calculated with 20% padding, or set manually with `ylim` and `xlim`
+3. **Box spacing**: Adjust to your preferred look with `boxSpacing`
 
 ## Requirements
 
