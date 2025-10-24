@@ -1,5 +1,5 @@
 function [xCoordinates, lgdObject] = boxPlot(inputData, NameValueArgs)
-% BOXPLOT Plot customizable boxplot from vector or matrix input.
+% BOXPLOT Customizable boxplot from vector or matrix input.
 %
 % MIT License
 % Copyright (c) 2025 Ryan Gorzek
