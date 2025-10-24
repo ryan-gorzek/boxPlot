@@ -1,4 +1,4 @@
-# boxPlot - A Better Boxplot for MATLAB
+# boxPlot - Better Boxplots for MATLAB
 
 A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, paired data connections, and both vertical and horizontal orientations.
 
