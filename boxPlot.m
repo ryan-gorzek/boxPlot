@@ -20,13 +20,16 @@ function [xCoordinates, lgdObject] = boxPlot(inputData, NameValueArgs)
 %
 %   inputData -- Numeric vector or matrix of data for boxplot. 
 %                If inputData is a matrix, each column will be plotted as a box.
-%                If inputData is a vector, specify categorical name-value 
-%                argument inputLabels to plot multiple boxes. 
+%                If inputData is a vector (row or column), specify the name-value argument 
+%                inputLabels to plot multiple boxes. Groups can have different sizes.
 %
 % Name-Value Arguments:
 %
 %   inputLabels (default: []) 
-%       Vector of categorical labels for vector input.
+%       Vector (row or column) of integer labels for vector input. Each unique  
+%       integer specifies a group, and the integers determine the order of boxes 
+%       along the plotting axis (e.g., 1, 2, 3). Groups can have different
+%       numbers of observations. Use boxLabels to specify textual labels.
 %
 %   groupSize (default: 1) 
 %       Scalar specifying the number of boxes per group.
@@ -252,6 +255,25 @@ arguments
 end
 
 %% Get dataset dimensions
+% Convert vector input with labels to padded matrix format
+if isvector(inputData) && numel(NameValueArgs.inputLabels) == numel(inputData)
+    % Get unique labels and find maximum group size
+    uniqueLabels = sort(unique(NameValueArgs.inputLabels), 'ascend');
+    nBoxes = numel(uniqueLabels);
+    maxGroupSize = max(histcounts(NameValueArgs.inputLabels, [uniqueLabels(:); max(uniqueLabels)+1]));
+    
+    % Create padded matrix with NaN for missing values
+    paddedData = nan(maxGroupSize, nBoxes);
+    for i = 1:nBoxes
+        groupData = inputData(NameValueArgs.inputLabels == uniqueLabels(i));
+        paddedData(1:numel(groupData), i) = groupData;
+    end
+    
+    % Replace inputData and reset inputLabels for matrix processing
+    inputData = paddedData;
+    NameValueArgs.inputLabels = reshape(repmat(1:size(inputData,2), [size(inputData,1), 1]), [], 1);
+end
+
 nBoxes = numel(unique(NameValueArgs.inputLabels));
 nGroups = nBoxes / NameValueArgs.groupSize;
 nSamples = size(inputData, 1);

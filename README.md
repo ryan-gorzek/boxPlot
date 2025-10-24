@@ -29,10 +29,24 @@ addpath('/path/to/boxPlot');
 
 ## Quick Start
 
-### Basic Usage
+### Vector Input with Integer Labels
 
 ```matlab
-% Generate sample data
+% Generate sample data with different group sizes
+data = [randn(80, 1) + 5; randn(100, 1) + 7; randn(60, 1) + 6];
+labels = [ones(80, 1); 2*ones(100, 1); 3*ones(60, 1)];
+
+% Create boxplot - integers determine box order along axis
+boxPlot(data, ...
+    'inputLabels', labels, ...
+    'boxLabels', {'Group A', 'Group B', 'Group C'}, ...
+    'boxColors', {[0.8, 0.3, 0.3], [0.3, 0.6, 0.8], [0.4, 0.8, 0.4]});
+```
+
+### Matrix Input
+
+```matlab
+% Generate sample data (each column becomes a box)
 data = randn(100, 3) + [5, 7, 6];
 
 % Create boxplot with custom colors
@@ -156,11 +170,14 @@ xCoordinates = boxPlot(inputData)
 ### Input Arguments
 
 - `inputData` - Numeric matrix or vector containing data to plot
+  - If matrix: each column becomes a box
+  - If vector: use with `inputLabels` to specify groups (can have different sizes)
 
 ### Name-Value Arguments (Selected)
 
 | Argument | Default | Description |
 |----------|---------|-------------|
+| `inputLabels` | `[]` | Integer vector specifying group membership for vector input. Integers determine box order (e.g., 1, 2, 3). Groups can have different sizes. |
 | `boxLabels` | `{1:N}` | Cell array of x-axis (or y-axis for horizontal) labels |
 | `boxColors` | Gray | Cell array of RGB colors for box fills |
 | `boxAlpha` | `1` | Box fill transparency (0-1) |
@@ -186,7 +203,7 @@ See full documentation in the function header for all 40+ customization options.
 
 The included `boxPlot_Examples.m` script demonstrates:
 
-1. Basic boxplot with custom colors
+1. Vector input with different group sizes (integer labels)
 2. Boxplot with individual data points
 3. Grouped boxplots with legend
 4. Paired data with connecting lines
