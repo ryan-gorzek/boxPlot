@@ -2,6 +2,7 @@
 
 A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, and paired data connections.
 
+![plot](https://github.com/ryan-gorzek/boxPlot/blob/main/plots/boxPlot_Examples.png)
 ## Why boxPlot?
 
 MATLAB's built-in `boxplot` function has limitations in customization and can be cumbersome to style. **boxPlot** offers:
@@ -175,24 +176,6 @@ The included `boxPlot_examples.m` script demonstrates:
 9. Transparent boxes with visible data distribution
 10. Publication-ready multi-panel comparison
 
-Run the examples:
-```matlab
-boxPlot_examples
-```
-
-## Comparison with MATLAB's boxplot
-
-| Feature | MATLAB boxplot | boxPlot |
-|---------|----------------|---------|
-| Custom box colors | Limited | Full RGB control per box |
-| Transparency | Not supported | All elements support alpha |
-| Individual points | Requires separate code | Built-in with jitter |
-| Paired connections | Not supported | Built-in line plotting |
-| Grouped data | Complex syntax | Simple `groupSize` parameter |
-| Legend | Manual creation | Automatic with styling |
-| Dependencies | Statistics Toolbox | None - base MATLAB only |
-| Modern syntax | Older style | Name-value pairs |
-
 ## Advanced Usage
 
 ### Custom Color Schemes
@@ -260,15 +243,10 @@ set(gca, 'GridAlpha', 0.15);
 
 ## Tips and Tricks
 
-1. **Color consistency**: Define your color scheme once and reuse it across figures
-2. **Jitter control**: Use `jitterBound` to adjust the spread of jittered points
-3. **Missing data**: The function handles NaN values automatically
-4. **Axis limits**: Automatically calculated with 20% padding, or set manually with `ylim`
-5. **Export**: Use MATLAB's `exportgraphics` for high-quality figure export
-
-```matlab
-exportgraphics(gcf, 'myBoxplot.png', 'Resolution', 300);
-```
+1. **Jitter control**: Use `jitterBound` to adjust the spread of jittered points
+2. **Missing data**: The function handles NaN values automatically
+3. **Axis limits**: Automatically calculated with 20% padding, or set manually with `ylim`
+4. **Box spacing**: Adjust to your preferred look with `boxSpacing` argument
 
 ## Requirements
 
@@ -279,42 +257,4 @@ exportgraphics(gcf, 'myBoxplot.png', 'Resolution', 300);
 
 MIT License - see LICENSE file for details
 
-Copyright (c) 2022 Ryan Gorzek
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
-
-## Citation
-
-If you use this function in your research, please cite:
-
-```
-Gorzek, R. (2022). boxPlot: Enhanced boxplot visualization for MATLAB. 
-GitHub repository, https://github.com/gorzek-ryan/matlab_viz
-```
-
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- Full customization of box appearance
-- Support for grouped data and legends
-- Individual point plotting with jitter
-- Paired data connections
-- Comprehensive documentation and examples
-
-## Support
-
-For questions, bug reports, or feature requests:
-- Open an issue on GitHub
-- Check existing documentation and examples
-- Review the function header for detailed parameter descriptions
-
-## Related Functions
-
-This is part of a larger collection of MATLAB visualization tools. Check out the [matlab_viz repository](https://github.com/gorzek-ryan/matlab_viz) for more enhanced plotting functions.
-
----
-
-**Made with ❤️ for better scientific visualization in MATLAB**
+Copyright (c) 2025 Ryan Gorzek
