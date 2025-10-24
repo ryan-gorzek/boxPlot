@@ -292,5 +292,4 @@ set(gca, 'GridAlpha', 0.15);
 ## License
 
 MIT License - see LICENSE file for details
-
 Copyright (c) 2025 Ryan Gorzek
