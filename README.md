@@ -2,7 +2,7 @@
 
 A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, and paired data connections.
 
-![plot](https://github.com/ryan-gorzek/boxPlot/blob/main/plots/boxPlot_Examples.png)
+![plot](https://github.com/ryan-gorzek/boxPlot/blob/main/plots/boxPlot_Examples.jpeg)
 ## Why boxPlot?
 
 MATLAB's built-in `boxplot` function has limitations in customization and can be cumbersome to style. **boxPlot** offers:
