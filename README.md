@@ -1,6 +1,6 @@
 # boxPlot - A Better Boxplot for MATLAB
 
-A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, and paired data connections.
+A highly customizable boxplot function for MATLAB that provides extensive control over appearance, supports grouped data, individual data point visualization, paired data connections, and both vertical and horizontal orientations.
 
 ![plot](https://github.com/ryan-gorzek/boxPlot/blob/main/plots/boxPlot_Examples.jpeg)
 ## Why boxPlot?
@@ -12,6 +12,7 @@ MATLAB's built-in `boxplot` and `boxchart` functions have limitations in customi
 - **Grouped data** - Easy handling of factorial designs with automatic spacing
 - **Individual points** - Overlay raw data with customizable jitter
 - **Paired connections** - Connect related observations with lines (ideal for repeated measures)
+- **Horizontal orientation** - Create horizontal boxplots for better label readability or space-constrained layouts
 - **Publication-ready** - Clean, professional look with minimal code
 - **Intuitive syntax** - Modern name-value pair arguments with sensible defaults
 - **Zero dependencies** - Works with base MATLAB, no toolboxes required
@@ -82,6 +83,22 @@ boxPlot(groupedData, ...
     'lgdColors', {[0.4, 0.6, 0.9], [0.9, 0.5, 0.4]});
 ```
 
+### Horizontal Boxplot
+
+```matlab
+% Create horizontal boxplot for better label readability
+data = randn(50, 4) + [10, 15, 20, 25];
+
+boxPlot(data, ...
+    'boxOrientation', 'horizontal', ...
+    'boxLabels', {'Group A', 'Group B', 'Group C', 'Group D'}, ...
+    'boxColors', {[0.8, 0.3, 0.3], [0.3, 0.6, 0.8], ...
+                  [0.4, 0.8, 0.4], [0.8, 0.6, 0.3]});
+
+xlabel('Response Value');
+ylabel('Groups');
+```
+
 ### Custom Box Coordinates
 
 ```matlab
@@ -105,6 +122,7 @@ Control every aspect of your boxplot:
 - **Outliers**: Color, size, marker style, transparency, jitter
 - **Points**: Individual data point overlay with full styling control
 - **Lines**: Connect paired observations across groups
+- **Orientation**: Vertical (default) or horizontal layout
 
 ### Grouping Support
 
@@ -112,6 +130,7 @@ Handle complex experimental designs with ease:
 - Specify `groupSize` to define factorial structures
 - Use `labelGroups` to show one label per group
 - Automatically handles spacing and alignment
+- Works seamlessly with both vertical and horizontal orientations
 
 ### Smart Defaults
 
@@ -125,6 +144,7 @@ Handle complex experimental designs with ease:
 - Matrix input: each column becomes a box
 - Vector input with labels: specify categorical grouping
 - Handles datasets with varying numbers of observations
+- Switch between vertical and horizontal with a single parameter
 
 ## Syntax
 
@@ -141,10 +161,11 @@ xCoordinates = boxPlot(inputData)
 
 | Argument | Default | Description |
 |----------|---------|-------------|
-| `boxLabels` | `{1:N}` | Cell array of x-axis labels |
+| `boxLabels` | `{1:N}` | Cell array of x-axis (or y-axis for horizontal) labels |
 | `boxColors` | Gray | Cell array of RGB colors for box fills |
 | `boxAlpha` | `1` | Box fill transparency (0-1) |
 | `boxEdgeWidth` | `1` | Width of box edges |
+| `boxOrientation` | `'vertical'` | Box orientation: `'vertical'` or `'horizontal'` |
 | `medianWidth` | `2` | Width of median line |
 | `outlierSize` | `30` | Size of outlier markers |
 | `plotPoints` | `false` | Overlay individual data points |
@@ -158,7 +179,7 @@ See full documentation in the function header for all 40+ customization options.
 
 ### Output Arguments
 
-- `xCoordinates` - X-axis positions of boxes (useful for adding annotations)
+- `xCoordinates` - X-axis (or y-axis for horizontal) positions of boxes (useful for adding annotations)
 - `lgdObject` - Legend object (if legend is displayed)
 
 ## Examples
@@ -174,7 +195,8 @@ The included `boxPlot_Examples.m` script demonstrates:
 7. Minimal clean style for publications
 8. Wide data with custom spacing
 9. Transparent boxes with visible data distribution
-10. Publication-ready multi-panel comparison
+10. Custom box coordinates with non-uniform spacing
+11. Horizontal boxplot with grouped data
 
 ## Advanced Usage
 
@@ -200,6 +222,19 @@ boxPlot(data, ...
     'pointSize', 25, ...
     'pointAlpha', 0.6, ...
     'pointJitter', 'randn');       % Normal jitter
+```
+
+### Horizontal Boxplot with Long Labels
+
+```matlab
+% Horizontal orientation is ideal for long category names
+categories = {'Very Long Category Name A', ...
+              'Another Long Category Name B', ...
+              'Yet Another Category C'};
+
+boxPlot(data, ...
+    'boxOrientation', 'horizontal', ...
+    'boxLabels', categories);
 ```
 
 ### Repeated Measures Design
@@ -246,6 +281,8 @@ set(gca, 'GridAlpha', 0.15);
 1. **Jitter control**: Use `jitterBound` to adjust the spread of jittered points
 2. **Axis limits**: Automatically calculated with 20% padding, or set manually with `ylim` and `xlim`
 3. **Box spacing**: Adjust to your preferred look with `boxSpacing`
+4. **Horizontal plots**: Use `'boxOrientation', 'horizontal'` for better readability of long labels or when space is limited horizontally
+5. **Grouped horizontal**: Combine `'boxOrientation', 'horizontal'` with `groupSize` and `labelGroups` for complex factorial designs
 
 ## Requirements
 
