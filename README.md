@@ -163,7 +163,7 @@ See full documentation in the function header for all 40+ customization options.
 
 ## Examples
 
-The included `boxPlot_examples.m` script demonstrates:
+The included `boxPlot_Examples.m` script demonstrates:
 
 1. Basic boxplot with custom colors
 2. Boxplot with individual data points
