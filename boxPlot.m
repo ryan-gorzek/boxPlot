@@ -490,11 +490,9 @@ for box = uniqueLabels
         
         maxWhisker = upperQuantile + 1.5 * (upperQuantile - lowerQuantile); 
         upperWhisker = max(currData(currData <= maxWhisker));
-        if isempty(upperWhisker), upperWhisker = maxWhisker; end
         
         minWhisker = lowerQuantile - 1.5 * (upperQuantile - lowerQuantile);
         lowerWhisker = min(currData(currData >= minWhisker));
-        if isempty(lowerWhisker), lowerWhisker = minWhisker; end
         
         hold on;
         
